@@ -1,22 +1,22 @@
 <template>
-  <div class="min-h-screen bg-purple-50 flex flex-col">
+  <div class="min-h-screen bg-gray-100 flex flex-col">
     <div class="flex-grow flex flex-col max-w-md w-full mx-auto bg-white shadow-lg overflow-hidden transition-all duration-300 ease-in-out">
       <!-- Calendar Header -->
       <div
-          class="bg-purple-800 p-6 text-white transition-all duration-300 ease-in-out"
+          class="bg-gray-800 p-6 text-white transition-all duration-300 ease-in-out"
           :class="{ 'pb-8': isCalendarExpanded, 'pb-4': !isCalendarExpanded }"
       >
         <div class="flex justify-between items-center mb-6">
           <button
               @click="changeMonth(-1)"
-              class="text-white hover:text-purple-200 transition-colors"
+              class="text-white hover:text-white-200 transition-colors"
           >
             <ChevronLeftIcon class="h-6 w-6" />
           </button>
           <h2 class="text-xl font-semibold">{{ currentMonth }} {{ currentYear }}</h2>
           <button
               @click="changeMonth(1)"
-              class="text-white hover:text-purple-200 transition-colors"
+              class="text-white hover:text-white-200 transition-colors"
           >
             <ChevronRightIcon class="h-6 w-6" />
           </button>
@@ -25,7 +25,7 @@
         <!-- Calendar Grid -->
         <transition name="fade" mode="out-in">
           <div v-if="isCalendarExpanded" :key="currentMonth + currentYear">
-            <div class="grid grid-cols-7 gap-2 mb-4 text-purple-200 text-sm">
+            <div class="grid grid-cols-7 gap-2 mb-4 text-gray-400 text-sm">
               <span v-for="day in ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']" :key="day" class="text-center">
                 {{ day }}
               </span>
@@ -37,10 +37,10 @@
                   @click="selectDate(date)"
                   class="aspect-square rounded-full flex items-center justify-center text-sm relative"
                   :class="{
-                  'text-purple-300': !date.isCurrentMonth,
+                  'text-gray-300': !date.isCurrentMonth,
                   'text-white': date.isCurrentMonth,
-                  'bg-purple-700': date.isSelected,
-                  'hover:bg-purple-600': date.isCurrentMonth && !date.isSelected
+                  'bg-gray-700': date.isSelected,
+                  'hover:bg-gray-600': date.isCurrentMonth && !date.isSelected
                 }"
               >
                 {{ date.day }}
@@ -58,7 +58,7 @@
             </div>
 
             <!-- Legend -->
-            <div class="grid grid-cols-4 gap-4 text-sm text-purple-200 mt-4">
+            <div class="grid grid-cols-4 gap-4 text-sm text-gray-200 mt-4">
               <div class="flex items-center space-x-2">
                 <span class="w-2 h-2 rounded-full bg-black"></span>
                 <span>Streng</span>
@@ -87,40 +87,40 @@
             @click="toggleCalendar"
         >
           <div
-              class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center transition-transform duration-300 hover:bg-green-600"
+              class="w-12 h-12 bg-gray-600 rounded-full flex items-center justify-center transition-transform duration-300 hover:bg-gray-700"
               :class="{ 'rotate-180': !isCalendarExpanded }"
           >
             <ChevronUpIcon class="h-8 w-8 text-white" />
           </div>
         </div>
-        <div class="h-px bg-purple-100"></div>
+        <div class="h-px bg-gray-100"></div>
       </div>
 
       <!-- Selected Date Information -->
       <div class="flex-grow overflow-y-auto p-6 transition-all duration-300 ease-in-out">
-        <h3 class="text-lg font-semibold text-purple-900 mb-4">
+        <h3 class="text-lg font-semibold text-gray-900 mb-4">
           {{ selectedDate ? formatDate(selectedDate.datum) : 'Wählen Sie ein Datum' }}
         </h3>
         <div v-if="selectedDate" class="space-y-4">
-          <div class="p-4 rounded-xl bg-purple-50">
-            <h4 class="font-medium text-purple-900">Fasteninformation</h4>
-            <p class="text-sm text-purple-600">{{ selectedDate.fastenInformation }}</p>
+          <div class="p-4 rounded-xl bg-gray-50">
+            <h4 class="font-medium text-gray-900">Fasteninformation</h4>
+            <p class="text-sm text-gray-600">{{ selectedDate.fastenInformation }}</p>
           </div>
-          <div v-if="selectedDate.evangelium" @click="fetchBibleText('evangelium')" class="p-4 rounded-xl bg-purple-50 cursor-pointer hover:bg-purple-100 transition-colors">
-            <h4 class="font-medium text-purple-900">Evangelium</h4>
-            <p class="text-sm text-purple-600">{{ selectedDate.evangelium }}</p>
+          <div v-if="selectedDate.evangelium" @click="fetchBibleText('evangelium')" class="p-4 rounded-xl bg-gray-50 cursor-pointer hover:bg-gray-100 transition-colors">
+            <h4 class="font-medium text-gray-900">Evangelium</h4>
+            <p class="text-sm text-gray-600">{{ selectedDate.evangelium }}</p>
           </div>
-          <div v-if="selectedDate.epistel" @click="fetchBibleText('epistel')" class="p-4 rounded-xl bg-purple-50 cursor-pointer hover:bg-purple-100 transition-colors">
-            <h4 class="font-medium text-purple-900">Epistel</h4>
-            <p class="text-sm text-purple-600">{{ selectedDate.epistel }}</p>
+          <div v-if="selectedDate.epistel" @click="fetchBibleText('epistel')" class="p-4 rounded-xl bg-gray-50 cursor-pointer hover:bg-gray-100 transition-colors">
+            <h4 class="font-medium text-gray-900">Epistel</h4>
+            <p class="text-sm text-gray-600">{{ selectedDate.epistel }}</p>
           </div>
-          <div v-if="selectedDate.orthrosEvangelium" @click="fetchBibleText('orthrosEvangelium')" class="p-4 rounded-xl bg-purple-50 cursor-pointer hover:bg-purple-100 transition-colors">
-            <h4 class="font-medium text-purple-900">Orthros Evangelium</h4>
-            <p class="text-sm text-purple-600">{{ selectedDate.orthrosEvangelium }}</p>
+          <div v-if="selectedDate.orthrosEvangelium" @click="fetchBibleText('orthrosEvangelium')" class="p-4 rounded-xl bg-gray-50 cursor-pointer hover:bg-gray-100 transition-colors">
+            <h4 class="font-medium text-gray-900">Orthros Evangelium</h4>
+            <p class="text-sm text-gray-600">{{ selectedDate.orthrosEvangelium }}</p>
           </div>
-          <div v-if="selectedDate.altesTestament" @click="fetchBibleText('altesTestament')" class="p-4 rounded-xl bg-purple-50 cursor-pointer hover:bg-purple-100 transition-colors">
-            <h4 class="font-medium text-purple-900">Altes Testament</h4>
-            <p class="text-sm text-purple-600">{{ selectedDate.altesTestament }}</p>
+          <div v-if="selectedDate.altesTestament" @click="fetchBibleText('altesTestament')" class="p-4 rounded-xl bg-gray-50 cursor-pointer hover:bg-gray-100 transition-colors">
+            <h4 class="font-medium text-gray-900">Altes Testament</h4>
+            <p class="text-sm text-gray-600">{{ selectedDate.altesTestament }}</p>
           </div>
         </div>
         <!-- Bible Text Display -->
