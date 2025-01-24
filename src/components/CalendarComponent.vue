@@ -160,7 +160,7 @@ const fetchMonthData = async () => {
   const year = currentDate.value.getFullYear();
   const month = currentDate.value.getMonth() + 1; // JavaScript months are 0-indexed
   try {
-    const response = await fetch(`https://212.227.103.182:443/calendar/public/getMonth?year=${year}&month=${month}`);
+    const response = await fetch(`https://test.cmano.de/calendar/public/getMonth?year=${year}&month=${month}`);
     const data = await response.json();
     monthData.value = data;
 
@@ -213,7 +213,7 @@ const fetchBibleText = async (key) => {
   if (!selectedDate.value || !selectedDate.value[key]) return
 
   try {
-    const response = await fetch('https://212.227.103.182:443/bibleText/public/getByTextstelle', {
+    const response = await fetch('https://test.cmano.de/bibleText/public/getByTextstelle', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
