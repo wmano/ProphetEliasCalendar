@@ -49,9 +49,9 @@
                     class="absolute -bottom-1 w-2 h-2"
                     :class="{
                       'bg-red-400 transform rotate-45': date.marker === 'black',
-                      'bg-red-400': date.marker === 'red',
-                      'bg-blue-400': date.marker === 'blue',
-                      'bg-yellow-400': date.marker === 'yellow'
+                      'rounded-full bg-red-400': date.marker === 'red',
+                      'rounded-full bg-blue-400': date.marker === 'blue',
+                      'rounded-full bg-yellow-400': date.marker === 'yellow'
                     }"
                 ></span>
 
