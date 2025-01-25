@@ -60,7 +60,7 @@
             <!-- Legend -->
             <div class="grid grid-cols-4 gap-4 text-sm text-gray-200 mt-4">
               <div class="flex items-center space-x-2">
-                <span class="w-2 h-2 rounded-full bg-black"></span>
+                <span class="w-2 h-2 bg-red-400 transform rotate-45"></span>
                 <span>Streng</span>
               </div>
               <div class="flex items-center space-x-2">
@@ -160,7 +160,7 @@ const fetchMonthData = async () => {
   const year = currentDate.value.getFullYear();
   const month = currentDate.value.getMonth() + 1; // JavaScript months are 0-indexed
   try {
-    const response = await fetch(`https://test.cmano.de/calendar/public/getMonth?year=${year}&month=${month}`);
+    const response = await fetch(`https://wmano.uber.space/api/calendar/public/getMonth?year=${year}&month=${month}`);
     const data = await response.json();
     monthData.value = data;
 
@@ -213,7 +213,7 @@ const fetchBibleText = async (key) => {
   if (!selectedDate.value || !selectedDate.value[key]) return
 
   try {
-    const response = await fetch('https://test.cmano.de/bibleText/public/getByTextstelle', {
+    const response = await fetch('https://wmano.uber.space/api/bibleText/public/getByTextstelle', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
