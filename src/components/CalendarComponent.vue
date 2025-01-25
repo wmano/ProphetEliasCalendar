@@ -46,14 +46,15 @@
                 {{ date.day }}
                 <span
                     v-if="date.marker"
-                    class="absolute -bottom-1 w-2 h-2 rounded-full"
+                    class="absolute -bottom-1 w-2 h-2"
                     :class="{
-                    'bg-black': date.marker === 'black',
-                    'bg-red-400': date.marker === 'red',
-                    'bg-blue-400': date.marker === 'blue',
-                    'bg-yellow-400': date.marker === 'yellow'
-                  }"
+                      'bg-red-400 transform rotate-45': date.marker === 'black',
+                      'bg-red-400': date.marker === 'red',
+                      'bg-blue-400': date.marker === 'blue',
+                      'bg-yellow-400': date.marker === 'yellow'
+                    }"
                 ></span>
+
               </button>
             </div>
 
